@@ -2,7 +2,7 @@
   "name": "English Master Pro",
   "short_name": "EMP",
   "description": "A completely free English learning platform from Beginner to Advanced.",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#0f0f1a",
   "theme_color": "#6c63ff",
@@ -14,6 +14,6 @@
   "categories": ["education", "productivity"],
   "lang": "en",
   "dir": "ltr",
-  "scope": "/",
+  "scope": "./",
   "prefer_related_applications": false
 }

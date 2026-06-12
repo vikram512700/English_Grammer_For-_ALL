@@ -1,25 +1,25 @@
 /* ============================================================
    sw.js – Service Worker for English Master Pro PWA
    ============================================================ */
-const CACHE_NAME = 'emp-v1';
+const CACHE_NAME = 'emp-v2';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/css/index.css',
-  '/css/dashboard.css',
-  '/css/modules.css',
-  '/css/quiz.css',
-  '/css/animations.css',
-  '/js/data.js',
-  '/js/db.js',
-  '/js/gamification.js',
-  '/js/quiz.js',
-  '/js/lessons.js',
-  '/js/modules.js',
-  '/js/progress.js',
-  '/js/extras.js',
-  '/js/app.js',
-  '/js/sw-register.js',
+  './',
+  'index.html',
+  'css/index.css',
+  'css/dashboard.css',
+  'css/modules.css',
+  'css/quiz.css',
+  'css/animations.css',
+  'js/data.js',
+  'js/db.js',
+  'js/gamification.js',
+  'js/quiz.js',
+  'js/lessons.js',
+  'js/modules.js',
+  'js/progress.js',
+  'js/extras.js',
+  'js/app.js',
+  'js/sw-register.js',
 ];
 
 self.addEventListener('install', event => {

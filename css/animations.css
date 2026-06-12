@@ -1,0 +1,128 @@
+/* ============================================================
+   Animations & Progress Styles
+   ============================================================ */
+
+/* Progress Page */
+.progress-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px; margin-bottom: 28px;
+}
+.progress-stat-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 20px;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; text-align: center;
+}
+.progress-stat-icon { font-size: 2rem; }
+.progress-stat-value { font-size: 1.8rem; font-weight: 800; font-family: var(--font-display); }
+.progress-stat-label { font-size: 0.78rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+
+.progress-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px; margin-bottom: 28px;
+}
+.chart-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 20px;
+}
+.chart-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 16px; }
+.chart-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.chart-bar-label { font-size: 0.8rem; color: var(--text-secondary); width: 120px; flex-shrink: 0; }
+.chart-bar-track {
+  flex: 1; height: 8px;
+  background: var(--bg-elevated); border-radius: var(--radius-full); overflow: hidden;
+}
+.chart-bar-fill {
+  height: 100%; border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transition: width 0.8s ease;
+}
+.chart-bar-val { font-size: 0.78rem; color: var(--text-muted); width: 36px; text-align: right; }
+
+/* Activity Heatmap */
+.activity-heatmap-container { }
+.heatmap {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  padding: 16px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+}
+.heatmap-cell {
+  width: 14px; height: 14px;
+  border-radius: 3px;
+  background: var(--bg-elevated);
+  transition: var(--transition); cursor: pointer;
+}
+.heatmap-cell:hover { transform: scale(1.3); }
+.heatmap-cell.level-1 { background: rgba(108,99,255,0.25); }
+.heatmap-cell.level-2 { background: rgba(108,99,255,0.5); }
+.heatmap-cell.level-3 { background: rgba(108,99,255,0.75); }
+.heatmap-cell.level-4 { background: #6c63ff; }
+
+/* Achievements */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.achievement-item {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 22px 16px;
+  text-align: center; transition: var(--transition);
+  position: relative; overflow: hidden;
+}
+.achievement-item.unlocked {
+  border-color: rgba(255,209,102,0.4);
+  background: linear-gradient(135deg, var(--bg-card), rgba(255,209,102,0.05));
+}
+.achievement-item.locked { opacity: 0.5; filter: grayscale(1); }
+.achievement-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.achievement-badge { font-size: 3rem; margin-bottom: 10px; }
+.achievement-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+.achievement-desc { font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 8px; }
+.achievement-unlocked-label {
+  display: inline-block; font-size: 0.7rem; font-weight: 600;
+  padding: 3px 10px; border-radius: var(--radius-full);
+  background: rgba(255,209,102,0.2); color: var(--warning);
+}
+
+/* ── Micro animations ──────────────────────────────────── */
+@keyframes bounce-in {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%,60% { transform: translateX(-6px); }
+  40%,80% { transform: translateX(6px); }
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+.animate-bounce-in { animation: bounce-in 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+.animate-shake { animation: shake 0.4s ease; }
+
+/* Confetti */
+.confetti-piece {
+  position: fixed; width: 10px; height: 10px;
+  top: -10px; z-index: 9998; pointer-events: none;
+  border-radius: 2px;
+  animation: confetti-fall linear forwards;
+}
+
+/* Glow pulse on correct answer */
+@keyframes glow-correct {
+  0% { box-shadow: 0 0 0 0 rgba(67,233,123,0.6); }
+  100% { box-shadow: 0 0 0 16px rgba(67,233,123,0); }
+}
+.animate-correct { animation: glow-correct 0.6s ease; }
+
+@keyframes glow-wrong {
+  0% { box-shadow: 0 0 0 0 rgba(239,71,111,0.6); }
+  100% { box-shadow: 0 0 0 16px rgba(239,71,111,0); }
+}
+.animate-wrong { animation: glow-wrong 0.6s ease; }

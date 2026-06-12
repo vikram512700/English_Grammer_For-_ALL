@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="English Master Pro – A completely free English learning platform from Beginner to Advanced. Master Grammar, Tenses, Vocabulary, Reading, Writing, Speaking, and more." />
+  <meta name="theme-color" content="#6c63ff" />
+  <title>English Master Pro – Learn English for Free</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/icons/icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/modules.css" />
+  <link rel="stylesheet" href="css/quiz.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/extras.css" />
+</head>
+<body class="dark-mode">
+
+  <!-- Splash Screen -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="splash-content">
+      <div class="splash-logo">
+        <div class="logo-ring"></div>
+        <span class="logo-icon">📚</span>
+      </div>
+      <h1 class="splash-title">English Master Pro</h1>
+      <p class="splash-tagline">Learn → Practice → Revise → Master</p>
+      <div class="splash-loader">
+        <div class="loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated Particle Background -->
+  <canvas id="particle-canvas" class="particle-canvas"></canvas>
+
+  <!-- App Shell -->
+  <div id="app" class="app hidden">
+
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav" id="top-nav">
+      <div class="nav-left">
+        <button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="brand">
+          <span class="brand-icon">📚</span>
+          <span class="brand-name">English Master Pro</span>
+        </div>
+      </div>
+      <div class="nav-center">
+        <div class="search-container" id="search-container">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" id="search-input" placeholder="Search topics, words, lessons... (Ctrl+K)" autocomplete="off" />
+          <kbd class="search-kbd">Ctrl+K</kbd>
+          <div class="search-results" id="search-results"></div>
+        </div>
+      </div>
+      <div class="nav-right">
+        <div class="xp-badge" id="xp-badge">
+          <span class="xp-icon">⚡</span>
+          <span id="nav-xp">0 XP</span>
+        </div>
+        <div class="streak-badge" id="streak-badge">
+          <span class="streak-icon">🔥</span>
+          <span id="nav-streak">0</span>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <div class="user-avatar" id="user-avatar">
+          <span id="user-initial">A</span>
+          <div class="level-ring" id="level-ring"></div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-profile">
+        <div class="profile-avatar-large">
+          <span id="sidebar-initial">A</span>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name" id="sidebar-name">English Learner</div>
+          <div class="profile-level" id="sidebar-level">Level 1 – Beginner</div>
+        </div>
+        <div class="profile-xp-bar">
+          <div class="xp-fill" id="sidebar-xp-fill" style="width:0%"></div>
+        </div>
+        <div class="profile-xp-text" id="sidebar-xp-text">0 / 500 XP</div>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="nav-item active" data-page="dashboard" href="#dashboard">
+          <span class="nav-icon">🏠</span><span>Dashboard</span>
+        </a>
+        <a class="nav-item" data-page="grammar" href="#grammar">
+          <span class="nav-icon">📖</span><span>Grammar Academy</span>
+        </a>
+        <a class="nav-item" data-page="tenses" href="#tenses">
+          <span class="nav-icon">⏱️</span><span>Tense Mastery</span>
+        </a>
+        <a class="nav-item" data-page="vocabulary" href="#vocabulary">
+          <span class="nav-icon">🔤</span><span>Vocabulary Builder</span>
+        </a>
+        <a class="nav-item" data-page="reading" href="#reading">
+          <span class="nav-icon">📰</span><span>Reading Hub</span>
+        </a>
+        <a class="nav-item" data-page="writing" href="#writing">
+          <span class="nav-icon">✍️</span><span>Writing Studio</span>
+        </a>
+        <a class="nav-item" data-page="listening" href="#listening">
+          <span class="nav-icon">🎧</span><span>Listening Center</span>
+        </a>
+        <a class="nav-item" data-page="speaking" href="#speaking">
+          <span class="nav-icon">🎤</span><span>Speaking Lab</span>
+        </a>
+        <a class="nav-item" data-page="pronunciation" href="#pronunciation">
+          <span class="nav-icon">🗣️</span><span>Pronunciation Lab</span>
+        </a>
+        <a class="nav-item" data-page="idioms" href="#idioms">
+          <span class="nav-icon">💬</span><span>Idioms & Phrases</span>
+        </a>
+        <a class="nav-item" data-page="sentence" href="#sentence">
+          <span class="nav-icon">🧩</span><span>Sentence Builder</span>
+        </a>
+        <a class="nav-item" data-page="speed" href="#speed">
+          <span class="nav-icon">⚡</span><span>Speed Challenge</span>
+        </a>
+        <a class="nav-item" data-page="assessment" href="#assessment">
+          <span class="nav-icon">📝</span><span>Assessments</span>
+        </a>
+        <a class="nav-item" data-page="progress" href="#progress">
+          <span class="nav-icon">📊</span><span>My Progress</span>
+        </a>
+        <a class="nav-item" data-page="achievements" href="#achievements">
+          <span class="nav-icon">🏆</span><span>Achievements</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+
+      <!-- Dashboard Page -->
+      <div class="page active" id="page-dashboard">
+        <div class="page-header">
+          <h1>Welcome Back! 👋</h1>
+          <p class="page-subtitle">Continue your journey to English mastery</p>
+        </div>
+
+        <!-- Word of the Day -->
+        <div class="wotd-card" id="wotd-card">
+          <div class="wotd-left">
+            <div class="wotd-badge">✨ Word of the Day</div>
+            <div class="wotd-word" id="wotd-word">—</div>
+            <div class="wotd-pos" id="wotd-pos"></div>
+            <div class="wotd-def" id="wotd-def"></div>
+            <div class="wotd-example" id="wotd-example"></div>
+          </div>
+          <div class="wotd-right">
+            <button class="wotd-speak" id="wotd-speak" title="Listen">🔊</button>
+            <button class="wotd-next" id="wotd-next" title="Next word">🔄</button>
+          </div>
+        </div>
+
+        <!-- Daily Goal Strip -->
+        <div class="daily-strip" id="daily-strip">
+          <div class="strip-left">
+            <span class="strip-icon">🎯</span>
+            <div>
+              <div class="strip-title">Daily Goal</div>
+              <div class="strip-sub" id="daily-progress-text">0 / 10 questions</div>
+            </div>
+          </div>
+          <div class="strip-progress">
+            <div class="strip-bar"><div class="strip-fill" id="daily-fill" style="width:0%"></div></div>
+          </div>
+          <div class="strip-right">
+            <span class="strip-pct" id="daily-pct">0%</span>
+          </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">⚡</div>
+            <div class="stat-value" id="stat-xp">0</div>
+            <div class="stat-label">Total XP</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🔥</div>
+            <div class="stat-value" id="stat-streak">0</div>
+            <div class="stat-label">Day Streak</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">✅</div>
+            <div class="stat-value" id="stat-answered">0</div>
+            <div class="stat-label">Questions Done</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-value" id="stat-accuracy">0%</div>
+            <div class="stat-label">Accuracy</div>
+          </div>
+        </div>
+
+        <!-- Modules Grid -->
+        <h2 class="section-title">Learning Modules</h2>
+        <div class="modules-grid" id="modules-grid">
+          <!-- populated by JS -->
+        </div>
+
+        <!-- Continue Learning -->
+        <h2 class="section-title">Continue Learning</h2>
+        <div class="continue-cards" id="continue-cards">
+          <!-- populated by JS -->
+        </div>
+      </div>
+
+      <!-- Grammar Page -->
+      <div class="page" id="page-grammar">
+        <div class="page-header">
+          <h1>📖 Grammar Academy</h1>
+          <p class="page-subtitle">Master English grammar from the ground up</p>
+        </div>
+        <div class="topic-filter">
+          <button class="filter-btn active" data-filter="all">All Topics</button>
+          <button class="filter-btn" data-filter="beginner">Beginner</button>
+          <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+          <button class="filter-btn" data-filter="advanced">Advanced</button>
+        </div>
+        <div class="topics-grid" id="grammar-topics-grid"></div>
+      </div>
+
+      <!-- Tenses Page -->
+      <div class="page" id="page-tenses">
+        <div class="page-header">
+          <h1>⏱️ Tense Mastery</h1>
+          <p class="page-subtitle">Conquer all 12 tenses with 50+ questions each</p>
+        </div>
+        <div class="tenses-wheel-container">
+          <div class="tenses-grid" id="tenses-grid"></div>
+        </div>
+      </div>
+
+      <!-- Vocabulary Page -->
+      <div class="page" id="page-vocabulary">
+        <div class="page-header">
+          <h1>🔤 Vocabulary Builder</h1>
+          <p class="page-subtitle">2,000+ words to expand your vocabulary</p>
+        </div>
+        <div class="vocab-tabs">
+          <button class="vocab-tab active" data-tab="flashcards">Flash Cards</button>
+          <button class="vocab-tab" data-tab="wordlist">Word List</button>
+          <button class="vocab-tab" data-tab="quiz">Word Quiz</button>
+          <button class="vocab-tab" data-tab="matching">Matching</button>
+          <button class="vocab-tab" data-tab="spaced">Smart Review</button>
+        </div>
+        <div class="vocab-content" id="vocab-content"></div>
+      </div>
+
+      <!-- Reading Page -->
+      <div class="page" id="page-reading">
+        <div class="page-header">
+          <h1>📰 Reading Hub</h1>
+          <p class="page-subtitle">150+ passages from beginner to advanced</p>
+        </div>
+        <div class="reading-filters">
+          <select class="level-select" id="reading-level-filter">
+            <option value="all">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+          <select class="level-select" id="reading-topic-filter">
+            <option value="all">All Topics</option>
+            <option value="nature">Nature</option>
+            <option value="science">Science</option>
+            <option value="culture">Culture</option>
+            <option value="business">Business</option>
+          </select>
+        </div>
+        <div class="passages-grid" id="passages-grid"></div>
+      </div>
+
+      <!-- Writing Page -->
+      <div class="page" id="page-writing">
+        <div class="page-header">
+          <h1>✍️ Writing Studio</h1>
+          <p class="page-subtitle">500+ exercises to sharpen your writing skills</p>
+        </div>
+        <div class="writing-tabs">
+          <button class="writing-tab active" data-wtab="prompts">Writing Prompts</button>
+          <button class="writing-tab" data-wtab="correction">Error Correction</button>
+          <button class="writing-tab" data-wtab="rewrite">Rewrite</button>
+        </div>
+        <div class="writing-content" id="writing-content"></div>
+      </div>
+
+      <!-- Listening Page -->
+      <div class="page" id="page-listening">
+        <div class="page-header">
+          <h1>🎧 Listening Center</h1>
+          <p class="page-subtitle">Improve comprehension with text-to-speech exercises</p>
+        </div>
+        <div class="listening-grid" id="listening-grid"></div>
+      </div>
+
+      <!-- Speaking Page -->
+      <div class="page" id="page-speaking">
+        <div class="page-header">
+          <h1>🎤 Speaking Lab</h1>
+          <p class="page-subtitle">650+ speaking scenarios to build confidence</p>
+        </div>
+        <div class="speaking-grid" id="speaking-grid"></div>
+      </div>
+
+      <!-- Pronunciation Page -->
+      <div class="page" id="page-pronunciation">
+        <div class="page-header">
+          <h1>🗣️ Pronunciation Lab</h1>
+          <p class="page-subtitle">Perfect your accent and phonics</p>
+        </div>
+        <div class="pronunciation-grid" id="pronunciation-grid"></div>
+      </div>
+
+      <!-- Assessment Page -->
+      <div class="page" id="page-assessment">
+        <div class="page-header">
+          <h1>📝 Assessment Engine</h1>
+          <p class="page-subtitle">Test your knowledge with structured assessments</p>
+        </div>
+        <div class="assessment-types">
+          <div class="assessment-card" data-type="topic">
+            <div class="acard-icon">🎯</div>
+            <h3>Topic Test</h3>
+            <p>25 Questions</p>
+            <button class="btn-primary" onclick="App.startAssessment('topic')">Start</button>
+          </div>
+          <div class="assessment-card" data-type="unit">
+            <div class="acard-icon">📋</div>
+            <h3>Unit Test</h3>
+            <p>50 Questions</p>
+            <button class="btn-primary" onclick="App.startAssessment('unit')">Start</button>
+          </div>
+          <div class="assessment-card" data-type="module">
+            <div class="acard-icon">🏫</div>
+            <h3>Module Test</h3>
+            <p>100 Questions</p>
+            <button class="btn-primary" onclick="App.startAssessment('module')">Start</button>
+          </div>
+          <div class="assessment-card" data-type="final">
+            <div class="acard-icon">🏆</div>
+            <h3>Final Test</h3>
+            <p>200 Questions</p>
+            <button class="btn-primary" onclick="App.startAssessment('final')">Start</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Page -->
+      <div class="page" id="page-progress">
+        <div class="page-header">
+          <h1>📊 My Progress</h1>
+          <p class="page-subtitle">Track your learning journey</p>
+        </div>
+        <div class="progress-overview" id="progress-overview"></div>
+        <div class="progress-charts" id="progress-charts"></div>
+        <div class="activity-heatmap-container">
+          <h2 class="section-title">Activity Calendar</h2>
+          <div class="heatmap" id="activity-heatmap"></div>
+        </div>
+      </div>
+
+      <!-- Achievements Page -->
+      <div class="page" id="page-achievements">
+        <div class="page-header">
+          <h1>🏆 Achievements</h1>
+          <p class="page-subtitle">Earn badges and unlock rewards</p>
+        </div>
+        <div class="achievements-grid" id="achievements-grid"></div>
+      </div>
+
+      <!-- Idioms & Phrases Page -->
+      <div class="page" id="page-idioms">
+        <div class="page-header">
+          <h1>💬 Idioms & Phrases</h1>
+          <p class="page-subtitle">Master popular English expressions and their meanings</p>
+        </div>
+        <div class="idioms-grid" id="idioms-grid"></div>
+      </div>
+
+      <!-- Sentence Builder Page -->
+      <div class="page" id="page-sentence">
+        <div class="page-header">
+          <h1>🧩 Sentence Builder</h1>
+          <p class="page-subtitle">Drag and drop words to build correct sentences</p>
+        </div>
+        <div class="sentence-builder" id="sentence-builder"></div>
+      </div>
+
+      <!-- Speed Challenge Page -->
+      <div class="page" id="page-speed">
+        <div class="page-header">
+          <h1>⚡ Speed Challenge</h1>
+          <p class="page-subtitle">Answer as many questions as you can in 60 seconds!</p>
+        </div>
+        <div class="speed-game" id="speed-game">
+          <div class="speed-ready" id="speed-ready">
+            <div class="speed-trophy">🏎️</div>
+            <h2>Ready to Race?</h2>
+            <p>You have 60 seconds. Every correct answer = +15 XP. How many can you get?</p>
+            <div class="speed-best" id="speed-best">Best Score: 0</div>
+            <button class="btn-primary speed-start-btn" id="speed-start">🚀 Start Challenge</button>
+          </div>
+          <div class="speed-active hidden" id="speed-active">
+            <div class="speed-hud">
+              <div class="speed-timer-display">
+                <svg class="speed-ring" viewBox="0 0 120 120">
+                  <circle class="speed-ring-bg" cx="60" cy="60" r="52"/>
+                  <circle class="speed-ring-fill" cx="60" cy="60" r="52" id="speed-ring-fill"/>
+                </svg>
+                <span class="speed-time" id="speed-time">60</span>
+              </div>
+              <div class="speed-score-display">
+                <div class="speed-score-val" id="speed-score">0</div>
+                <div class="speed-score-label">Score</div>
+              </div>
+              <div class="speed-combo-display">
+                <div class="speed-combo-val" id="speed-combo">0</div>
+                <div class="speed-combo-label">Combo</div>
+              </div>
+            </div>
+            <div class="speed-question" id="speed-question">Loading...</div>
+            <div class="speed-options" id="speed-options"></div>
+          </div>
+          <div class="speed-results hidden" id="speed-results">
+            <div class="speed-result-emoji" id="speed-result-emoji">🎉</div>
+            <h2 id="speed-result-title">Time's Up!</h2>
+            <div class="speed-result-stats" id="speed-result-stats"></div>
+            <button class="btn-primary" id="speed-retry">🔄 Play Again</button>
+            <button class="btn-ghost" id="speed-back">← Back</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Quiz Modal -->
+    <div class="quiz-modal" id="quiz-modal" role="dialog" aria-modal="true" aria-label="Quiz">
+      <div class="quiz-container">
+        <div class="quiz-header">
+          <div class="quiz-meta">
+            <span class="quiz-topic" id="quiz-topic-label">Grammar</span>
+            <span class="quiz-count" id="quiz-count">Q 1/10</span>
+          </div>
+          <button class="quiz-close" id="quiz-close" aria-label="Close quiz">✕</button>
+        </div>
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quiz-progress-fill" style="width:0%"></div>
+        </div>
+        <div class="quiz-body" id="quiz-body">
+          <div class="question-timer" id="question-timer">
+            <svg class="timer-ring" viewBox="0 0 60 60">
+              <circle class="timer-bg" cx="30" cy="30" r="26"/>
+              <circle class="timer-circle" cx="30" cy="30" r="26" id="timer-circle"/>
+            </svg>
+            <span class="timer-num" id="timer-num">30</span>
+          </div>
+          <p class="question-text" id="question-text">Loading question...</p>
+          <div class="options-grid" id="options-grid"></div>
+          <div class="question-hint" id="question-hint" style="display:none">
+            <span class="hint-icon">💡</span>
+            <span id="hint-text"></span>
+          </div>
+        </div>
+        <div class="quiz-footer">
+          <button class="btn-secondary" id="hint-btn">💡 Hint</button>
+          <button class="btn-primary" id="next-btn" disabled>Next →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Results Modal -->
+    <div class="results-modal" id="results-modal" role="dialog" aria-modal="true">
+      <div class="results-container">
+        <div class="results-header">
+          <div class="results-emoji" id="results-emoji">🎉</div>
+          <h2 id="results-title">Quiz Complete!</h2>
+          <p id="results-subtitle">Here's how you did</p>
+        </div>
+        <div class="results-stats">
+          <div class="result-stat">
+            <div class="rs-value" id="rs-score">0</div>
+            <div class="rs-label">Score</div>
+          </div>
+          <div class="result-stat">
+            <div class="rs-value" id="rs-correct">0</div>
+            <div class="rs-label">Correct</div>
+          </div>
+          <div class="result-stat">
+            <div class="rs-value" id="rs-xp">+0</div>
+            <div class="rs-label">XP Earned</div>
+          </div>
+        </div>
+        <div class="results-bar-container">
+          <div class="results-bar"><div class="results-bar-fill" id="results-bar-fill" style="width:0%"></div></div>
+        </div>
+        <div class="results-actions">
+          <button class="btn-secondary" id="review-btn">📋 Review Answers</button>
+          <button class="btn-primary" id="retry-btn">🔄 Try Again</button>
+          <button class="btn-ghost" id="continue-btn">Continue →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson Modal -->
+    <div class="lesson-modal" id="lesson-modal" role="dialog" aria-modal="true">
+      <div class="lesson-container">
+        <div class="lesson-header">
+          <h2 id="lesson-title">Lesson</h2>
+          <button class="quiz-close" id="lesson-close">✕</button>
+        </div>
+        <div class="lesson-body" id="lesson-body"></div>
+        <div class="lesson-footer">
+          <button class="btn-primary" id="lesson-start-quiz">Practice Now →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Achievement Toast -->
+    <div class="achievement-toast" id="achievement-toast">
+      <div class="toast-icon">🏆</div>
+      <div class="toast-content">
+        <div class="toast-title">Achievement Unlocked!</div>
+        <div class="toast-desc" id="toast-desc">First Step</div>
+      </div>
+    </div>
+
+    <!-- XP Float -->
+    <div class="xp-float" id="xp-float">+10 XP</div>
+
+  </div><!-- end #app -->
+
+  <script src="js/data.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/gamification.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/lessons.js"></script>
+  <script src="js/modules.js"></script>
+  <script src="js/progress.js"></script>
+  <script src="js/extras.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/sw-register.js"></script>
+</body>
+</html>

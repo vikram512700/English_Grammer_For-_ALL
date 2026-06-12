@@ -70,6 +70,20 @@ The app can be run locally using any static web server:
 
 ---
 
+## 📱 Accessing on Mobile (iOS & Android)
+
+English Master Pro is hosted online and fully compatible as a Progressive Web App (PWA) on mobile devices:
+
+*   **Live Web App URL**: [https://vikram512700.github.io/English_Grammer_For-_ALL/](https://vikram512700.github.io/English_Grammer_For-_ALL/)
+
+### 📲 How to Install to Home Screen:
+*   **iOS (Safari)**: Open the Live Web App URL in Safari ➔ Tap the **Share** button (box with up arrow) ➔ Scroll and select **Add to Home Screen**.
+*   **Android (Chrome)**: Open the Live Web App URL in Chrome ➔ Tap the **three-dots menu** ➔ Select **Install app** or **Add to Home Screen**.
+
+Once installed, the app launches in standalone mode with its own launcher icon, hiding browser controls, and functions fully offline.
+
+---
+
 ## 🗂️ Documentation References
 *   For codebase layout and class architecture, see [ARCHITECTURE.md](file:///c:/Users/vikra/Downloads/EnglishMasterPro/ARCHITECTURE.md).
 *   For content outlines and structures, see [CONTENT_STRUCTURE.md](file:///c:/Users/vikra/Downloads/EnglishMasterPro/CONTENT_STRUCTURE.md).
